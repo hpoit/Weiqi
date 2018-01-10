@@ -4,11 +4,7 @@ struct player
     Stone
 end
 
-for player = (Black, White)
-eval(quote
-    ($player)(Black,White) = ($player)(($player)(Black,White))
-end)
-end
+import Black 
 
 struct move end
 struct liberties end
