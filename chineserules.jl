@@ -1,11 +1,13 @@
 "Chinese rules: https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html"
 
 struct player
-    for player = (:black, :white)
-    eval(quote
-        ($player)(black,white) = ($player)(($player)(black,white))
-    end)
-    end
+    Stone
+end
+
+for player = (Black, White)
+eval(quote
+    ($player)(Black,White) = ($player)(($player)(Black,White))
+end)
 end
 
 struct move end
