@@ -4,8 +4,6 @@ struct player
     Stone
 end
 
-import Black 
-
 struct move end
 struct liberties end
 struct group end
