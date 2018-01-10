@@ -3,10 +3,10 @@
 struct player
     for player = (:black, :white)
     eval(quote
-        ($player)(1,2) = ($player)(($player)(1,2))
+        ($player)(black,white) = ($player)(($player)(black,white))
     end)
     end
-end 
+end
 
 struct move end
 struct liberties end
