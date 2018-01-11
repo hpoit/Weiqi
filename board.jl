@@ -25,9 +25,11 @@ createboard(magnitude) = Board(Matrix{Empty}(magnitude, magnitude))
 magnitude = 19; cb = createboard(magnitude) # test for 361 intersections
 # make distinguished marks for star points when possible
 
+"Test board"
 cb.array[5, 8] = black # struct Move in Board State?
 cb.array[13,17] = white
 cb
 
+"Empty board"
 cb.array[1:19,1:19] = empty # [row, column]
 cb
