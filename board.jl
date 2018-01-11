@@ -10,6 +10,7 @@ Base.show(io::IO, ::Empty) = print(io, "·")
 
 mutable struct Board <: AbstractMatrix{Stone}
     array::Matrix{Stone}
+    player::Player  
 end
 
 Base.size(board::Board) = size(board.array)
