@@ -8,10 +8,16 @@ struct Whiteplayer <: Player
     white::White # <: Stone from board.jl
 end
 
-mutable struct Position
+mutable struct NewPosition
     stone::Stone # abstract type from board.jl
     row # from cb.array[,] in board.jl
     column # from cb.array[,] in board.jl
+end
+
+function nextplayer(stone) end
+
+mutable struct PositionHistory
+    newposition::NewPosition
 end
 
 mutable struct Move
@@ -23,6 +29,11 @@ function didplayerpass(player, position)
     if position = cb.array[0, 0]
         println("$player passed")
     end
+end
+
+mutable struct Boardstate
+    positionhistory::PositionHistory
+    newposition::NewPosition
 end
 
 struct Liberties end
