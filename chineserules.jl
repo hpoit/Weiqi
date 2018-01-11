@@ -31,10 +31,19 @@ function didplayerpass(player, position)
     end
 end
 
+mutable struct Nextplayer end
+
 mutable struct Boardstate
     positionhistory::PositionHistory
     newposition::NewPosition
+    nextplayer::Player
 end
+
+function(bs::Boardstate)(x)
+    if NewPosition.stone = Black
+        nextplayer = Whiteplayer
+    else nextplayer = Blackplayer
+    end 
 
 struct Liberties end
 struct Group end
