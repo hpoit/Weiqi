@@ -1,3 +1,5 @@
+include("board.jl")
+
 "Chinese rules: https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html"
 
 abstract type Player end
@@ -37,10 +39,8 @@ end
 
 mutable struct Nextplayer end
 
-mutable struct Boardstate
-    positionhistory::PositionHistory
-    newposition::NewPosition
-    nextplayer::Player
+mutable struct Boardstate <: AbstractMatrix{PositionHistory, NewPosition, Player}
+    array::Matrix{PositionHistory, NewPosition, Player}
 end
 
 function(bs::Boardstate)(x)
