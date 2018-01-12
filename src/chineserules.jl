@@ -1,4 +1,4 @@
-include("board.jl")
+using Weiqi
 
 "Chinese rules: https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html"
 
@@ -22,31 +22,31 @@ end
 
 function nextplayer(stone) end
 
-mutable struct PositionHistory
-    newposition::NewPosition
-end
-
 mutable struct Move
     player::Player
-    position::Position
+    position::NewPosition
 end
 
 function didplayerpass(player, position)
-    if position = cb.array[0, 0]
+    if position == Empty
         println("$player passed")
     end
 end
 
 mutable struct Nextplayer end
 
-mutable struct Boardstate <: AbstractMatrix{PositionHistory, NewPosition, Player}
-    array::Matrix{PositionHistory, NewPosition, Player}
+mutable struct PositionHistory <: AbstractMatrix{NewPosition}
+    array::Matrix{NewPosition}
+end
+
+mutable struct Boardstate <: AbstractMatrix{PositionHistory}
+    array::Matrix{PositionHistory}
 end
 
 function(bs::Boardstate)(x)
-    if newposition.stone = Black
-        nextplayer = Whiteplayer
-    else nextplayer = Blackplayer
+    if newposition.stone == Black
+        nextplayer == Whiteplayer
+    else nextplayer == Blackplayer
     end
 end
 
