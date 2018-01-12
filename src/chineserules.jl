@@ -48,6 +48,7 @@ function(bs::Boardstate)(x)
         nextplayer = Whiteplayer
     else nextplayer = Blackplayer
     end
+end
 
 struct Liberties end
 struct Group end
