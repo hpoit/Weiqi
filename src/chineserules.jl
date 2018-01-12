@@ -14,6 +14,10 @@ mutable struct NewPosition
     column # from cb.array[,] in board.jl
 end
 
+function (np::NewPosition)(stone,row,column)
+    ###
+end
+
 function nextplayer(stone) end
 
 mutable struct PositionHistory
@@ -40,10 +44,10 @@ mutable struct Boardstate
 end
 
 function(bs::Boardstate)(x)
-    if NewPosition.stone = Black
+    if newposition.stone = Black
         nextplayer = Whiteplayer
     else nextplayer = Blackplayer
-    end 
+    end
 
 struct Liberties end
 struct Group end
