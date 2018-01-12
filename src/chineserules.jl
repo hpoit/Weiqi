@@ -1,6 +1,6 @@
 using Weiqi
 
-"Chinese rules: https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html"
+# Chinese rules: https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
 abstract type Player end
 struct Blackplayer <: Player
