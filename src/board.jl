@@ -26,7 +26,7 @@ magnitude = 19; cb = createboard(magnitude) # test for 361 intersections
 # make distinguished marks for star points when possible
 
 "Test board"
-cb.array[5, 8] = black # struct Move in Board State?
+cb.array[5, 8] = black # struct Move in BoardState?
 cb.array[13,17] = white
 cb
 
