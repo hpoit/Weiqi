@@ -2,6 +2,7 @@ using Weiqi
 
 # Chinese rules https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
+# import Weiqi: was not necessary because these structs contain the types
 abstract type Player end
 struct Blackplayer <: Player
     black::Black # <: Stone from board.jl
