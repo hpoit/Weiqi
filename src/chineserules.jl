@@ -13,7 +13,7 @@ end
 
 mutable struct NewPosition <: AbstractMatrix{NewPosition}
     array::Matrix{NewPosition}
-    # stone::Stone # abstract type from board.jl
+    # player::Player
     # row # from cb.array[,] in board.jl
     # column # from cb.array[,] in board.jl
 end
@@ -45,7 +45,7 @@ mutable struct PositionHistory <: NewPosition
 end
 
 mutable struct Boardstate <: PositionHistory
-    ### 
+    ###
 end
 
 function(bs::Boardstate)(x)
