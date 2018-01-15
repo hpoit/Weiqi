@@ -18,10 +18,8 @@ mutable struct NewPosition
 end
 
 function (np::NewPosition)(player,row,column)
-    # if last NewPosition was Blackplayer
-    # then current NewPosition is Whiteplayer
-    # else current NewPosition is Blackplayer
-    # end
+    # I'm stuck! cb.array[5, 8] = black places a stone on the Board
+    # from test/board.jl, but it needs to be associated to a Player 
 end
 
 function nextplayer(stone) end
@@ -50,8 +48,8 @@ end
 
 function(bs::Boardstate)(x)
     if newposition.stone == Black
-        nextplayer == Whiteplayer
-    else nextplayer == Blackplayer
+        nextplayer::Nextplayer == Whiteplayer
+    else nextplayer::Nextplayer == Blackplayer
     end
 end
 
