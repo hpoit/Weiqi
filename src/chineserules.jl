@@ -11,14 +11,18 @@ struct Whiteplayer <: Player
     white::White # <: Stone from board.jl
 end
 
-mutable struct NewPosition
-    stone::Stone # abstract type from board.jl
-    row # from cb.array[,] in board.jl
-    column # from cb.array[,] in board.jl
+mutable struct NewPosition <: AbstractMatrix{NewPosition}
+    array::Matrix{NewPosition}
+    # stone::Stone # abstract type from board.jl
+    # row # from cb.array[,] in board.jl
+    # column # from cb.array[,] in board.jl
 end
 
 function (np::NewPosition)(stone,row,column)
-    ###
+    # if last NewPosition was Blackplayer
+    # then current NewPosition is Whiteplayer
+    # else current NewPosition is Blackplayer
+    # end
 end
 
 function nextplayer(stone) end
@@ -36,12 +40,12 @@ end
 
 mutable struct Nextplayer end
 
-mutable struct PositionHistory <: AbstractMatrix{NewPosition}
-    array::Matrix{NewPosition}
+mutable struct PositionHistory <: NewPosition
+    ###
 end
 
-mutable struct Boardstate <: AbstractMatrix{PositionHistory}
-    array::Matrix{PositionHistory}
+mutable struct Boardstate <: PositionHistory
+    ### 
 end
 
 function(bs::Boardstate)(x)
