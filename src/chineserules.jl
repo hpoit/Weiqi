@@ -18,8 +18,8 @@ mutable struct NewPosition
 end
 
 function (np::NewPosition)(player,row,column)
-    # I'm stuck! cb.array[5, 8] = black places a stone on the Board
-    # from test/board.jl, but it needs to be associated to a Player 
+    # I'm stuck! `cb.array[5, 8] = black` from test/board.jl places a stone
+    # on the board, but it needs to be associated to a Player 
 end
 
 function nextplayer(stone) end
