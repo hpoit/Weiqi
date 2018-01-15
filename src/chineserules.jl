@@ -18,7 +18,7 @@ mutable struct NewPosition <: AbstractMatrix{NewPosition}
     # column # from cb.array[,] in board.jl
 end
 
-function (np::NewPosition)(stone,row,column)
+function (np::NewPosition)(player,row,column)
     # if last NewPosition was Blackplayer
     # then current NewPosition is Whiteplayer
     # else current NewPosition is Blackplayer
