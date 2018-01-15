@@ -19,7 +19,7 @@ end
 
 function (np::NewPosition)(player,row,column)
     # I'm stuck! `cb.array[5, 8] = black` from test/board.jl places a stone
-    # on the board, but it needs to be associated to a Player 
+    # on the board, but it needs to be associated to a Player
 end
 
 function nextplayer(stone) end
@@ -43,7 +43,7 @@ end
 
 mutable struct Boardstate
     ph::PositionHistory
-    nextplayer
+    nextplayer::Nextplayer
 end
 
 function(bs::Boardstate)(x)
