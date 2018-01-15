@@ -13,8 +13,8 @@ end
 
 mutable struct NewPosition
     player::Player
-    row
-    column
+    row::Int64
+    column::Int64
 end
 
 function (np::NewPosition)(player,row,column)
@@ -43,8 +43,9 @@ mutable struct PositionHistory <: AbstractMatrix{NewPosition}
     array::Matrix{NewPosition}
 end
 
-mutable struct Boardstate <: PositionHistory
-    ###
+mutable struct Boardstate
+    ph::PositionHistory
+    nextplayer
 end
 
 function(bs::Boardstate)(x)
