@@ -14,8 +14,7 @@ end
 mutable struct NewPosition <: AbstractMatrix{NewPosition}
     array::Matrix{NewPosition}
     # player::Player
-    # row # from cb.array[,] in board.jl
-    # column # from cb.array[,] in board.jl
+    # cb.array[row, col] = black or white from board.jl
 end
 
 function (np::NewPosition)(player,row,column)
