@@ -11,10 +11,10 @@ struct Whiteplayer <: Player
     white::White # <: Stone from board.jl
 end
 
-mutable struct NewPosition <: AbstractMatrix{NewPosition}
-    array::Matrix{NewPosition}
-    # player::Player
-    # cb.array[row, col] = black or white from board.jl
+mutable struct NewPosition
+    player::Player
+    row
+    column
 end
 
 function (np::NewPosition)(player,row,column)
@@ -39,8 +39,8 @@ end
 
 mutable struct Nextplayer end
 
-mutable struct PositionHistory <: NewPosition
-    ###
+mutable struct PositionHistory <: AbstractMatrix{NewPosition}
+    array::Matrix{NewPosition}
 end
 
 mutable struct Boardstate <: PositionHistory
