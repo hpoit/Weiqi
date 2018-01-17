@@ -11,6 +11,7 @@ struct Whiteplayer <: Player
     white::White # <: Stone from board.jl
 end
 
+"Most functions and mutable structs below depend on NewPosition"
 mutable struct NewPosition
     player::Player
     row::Int64
@@ -23,11 +24,6 @@ function (np::NewPosition)(player,row,column)
 end
 
 function nextplayer(stone) end
-
-mutable struct Move
-    player::Player
-    position::NewPosition
-end
 
 function didplayerpass(player, position)
     if position == Empty
