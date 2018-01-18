@@ -11,7 +11,12 @@ end
 
 applynewposition!(board::Board, np::NewPosition) = board.array[np.color, np.coords]
 
-function nextplayer(stone) end
+function nextcolor(color)
+    if color == Black
+        nextcolor = White
+    else color == White
+        nextcolor = Black  
+end
 
 function didplayerpass(player, position)
     if position == Empty
