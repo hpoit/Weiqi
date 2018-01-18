@@ -17,8 +17,9 @@ function nextcolor(color)
     end
 end
 
-function pass(nextcolor)
-    if nextcolor == Empty
+function pass(color)
+    if color == Empty
+        
 end
 
 mutable struct Nextplayer end
