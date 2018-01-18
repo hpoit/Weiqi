@@ -2,10 +2,8 @@ using Weiqi
 
 # Chinese rules https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
-# import Weiqi: was not necessary because these structs contain the types
-
 mutable struct NewPosition
-    color::Color
+    color::Color # imports from src/board.jl
     coords::Tuple{Int, Int}
 end
 
@@ -16,10 +14,11 @@ function nextcolor(color)
         nextcolor = White
     else color == White
         nextcolor = Black
+    end
 end
 
 function pass(nextcolor)
-
+    if nextcolor == Empty
 end
 
 mutable struct Nextplayer end
