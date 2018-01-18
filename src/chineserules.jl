@@ -15,13 +15,11 @@ function nextcolor(color)
     if color == Black
         nextcolor = White
     else color == White
-        nextcolor = Black  
+        nextcolor = Black
 end
 
-function didplayerpass(player, position)
-    if position == Empty
-        println("$player passed")
-    end
+function pass(nextcolor)
+
 end
 
 mutable struct Nextplayer end
