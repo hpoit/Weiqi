@@ -3,25 +3,13 @@ using Weiqi
 # Chinese rules https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
 # import Weiqi: was not necessary because these structs contain the types
-abstract type Player end
-struct Blackplayer <: Player
-    black::Black # <: Stone from board.jl
-end
-struct Whiteplayer <: Player
-    white::White # <: Stone from board.jl
-end
 
-"Most functions and mutable structs below depend on NewPosition"
 mutable struct NewPosition
-    player::Player
-    row::Int64
-    column::Int64
+    color::Color
+    coords::Tuple{Int, Int}
 end
 
-function (np::NewPosition)(player,row,column)
-    # I'm stuck! `cb.array[5, 8] = black` from test/board.jl places a stone
-    # on the board, but here it needs to be associated to a Player
-end
+applynewposition!(board::Board, np::NewPosition) = board.array[np.color, np.coords]
 
 function nextplayer(stone) end
 

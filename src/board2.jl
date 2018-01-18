@@ -1,15 +1,3 @@
-const blackcolor = "black"
-const whitecolor = "white"
-
-const north = "north"
-const east = "east"
-const south = "south"
-const west = "west"
-const all = ["north", "east", "south", "west"]
-
-const empty = "·"
-const blackpointstate = "⚈"
-const whitepointstate = "⚆"
 
 const repeat = "The attempted repeated move is illegal."
 const occupied = "The selected intersection is occupied."
@@ -24,11 +12,11 @@ const active = "active"
 const idle = "idle"
 const ended = "ended"
 
-struct Color
-    black, white
-    Color(black) = new(black)
-    Color(white) = new(white)
-end
+#struct Color
+#    black, white
+#    Color(black) = new(black)
+#    Color(white) = new(white)
+#end
 
 struct Direction
     north, east, south, west, all
@@ -39,11 +27,6 @@ struct Direction
     Direction(all) = new(all)
 end
 
-struct PointState
-    empty, blackpointstate, whitepointstate
-    PointState(empty) = new(empty)
-    PointState(blackpointstate) = new(blackpointstate)
-    PointState(whitepointstate) = new(whitepointstate)
 end
 
 struct MoveError

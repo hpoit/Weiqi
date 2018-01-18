@@ -1,15 +1,15 @@
-abstract type Stone end
+abstract type Color end
 
-struct Empty <: Stone end
-struct Black <: Stone end
-struct White <: Stone end
+struct Empty <: Color end
+struct Black <: Color end
+struct White <: Color end
 
+Base.show(io::IO, ::Empty) = print(io, "·")
 Base.show(io::IO, ::Black) = print(io, "⚈")
 Base.show(io::IO, ::White) = print(io, "⚆")
-Base.show(io::IO, ::Empty) = print(io, "·")
 
-mutable struct Board <: AbstractMatrix{Stone}
-    array::Matrix{Stone}
+mutable struct Board <: AbstractMatrix{Color}
+    array::Matrix{Color}
 end
 
 Base.size(board::Board) = size(board.array)
