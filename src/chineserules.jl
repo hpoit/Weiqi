@@ -2,24 +2,27 @@ using Weiqi
 
 # Chinese rules https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
+function pass(color)
+    if color == Empty ######
+    #####
+end
+
 mutable struct NewPosition
     color::Color # imports from src/board.jl
     coords::Tuple{Int, Int}
 end
 
-applynewposition!(board::Board, np::NewPosition) = board.array[np.color, np.coords]
+"Apply `NewPosition` with `color`, given `coords`"
+applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
 function nextcolor(color)
     if color == Black
         nextcolor = White
-    else color == White
+    elseif color == White
         nextcolor = Black
+    else
+        nextcolor == Black
     end
-end
-
-function pass(color)
-    if color == Empty
-        
 end
 
 mutable struct Nextplayer end
