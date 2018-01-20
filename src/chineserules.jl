@@ -12,7 +12,7 @@ mutable struct NewPosition
     coords::Tuple{Int, Int}
 end
 
-"Apply `NewPosition` with `color`, given `coords`"
+"Given `coords`, apply `NewPosition` as `color`"
 applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
 function nextcolor(color)
