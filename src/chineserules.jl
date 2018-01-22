@@ -7,6 +7,17 @@ mutable struct NewPosition
     coords::Tuple{Int, Int}
 end
 
+"For beginning or after beginning of game"
+function nextcolor(color)
+    if color == Black
+        nextcolor = White
+    elseif color == White
+        nextcolor = Black
+    else
+        nextcolor == Black
+    end
+end
+
 "Given `coords`, apply `NewPosition` as `color`"
 applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
@@ -18,17 +29,6 @@ function pass(np)
         pass = White
     end
     ##### anything else?
-end
-
-"For beginning or after beginning of game"
-function nextcolor(color)
-    if color == Black
-        nextcolor = White
-    elseif color == White
-        nextcolor = Black
-    else
-        nextcolor == Black
-    end
 end
 
 mutable struct PositionHistory <: AbstractMatrix{NewPosition}

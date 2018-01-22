@@ -22,5 +22,6 @@ white = White()
 
 createboard(magnitude) = Board(Matrix{Empty}(magnitude, magnitude))
 
-magnitude = 19; cb = createboard(magnitude) # test for 361 intersections
+magnitude = 19; cb = createboard(magnitude)
+# test for 361 intersections
 # make distinguished marks for star points when possible
