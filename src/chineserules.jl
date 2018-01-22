@@ -2,11 +2,6 @@ using Weiqi
 
 # Chinese rules https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
-function pass(color)
-    if color == Empty ######
-    #####
-end
-
 mutable struct NewPosition
     color::Color # imports from src/board.jl
     coords::Tuple{Int, Int}
@@ -15,6 +10,17 @@ end
 "Given `coords`, apply `NewPosition` as `color`"
 applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
+"A `color` with `coords == [0,0]` is a pass"
+function pass(color)
+    if np.color == Black, np.coords == [0,0]
+        pass = Black
+    elseif np.color == White, np.coords == [0,0]
+        pass = White
+    end
+    ##### anything else?
+end
+
+"For beginning or after beginning of game"
 function nextcolor(color)
     if color == Black
         nextcolor = White
@@ -24,8 +30,6 @@ function nextcolor(color)
         nextcolor == Black
     end
 end
-
-mutable struct Nextplayer end
 
 mutable struct PositionHistory <: AbstractMatrix{NewPosition}
     array::Matrix{NewPosition}
