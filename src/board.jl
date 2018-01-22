@@ -1,15 +1,16 @@
 abstract type Color end
-
-struct Empty <: Color end # Empty shouldn't be a color for security reasons
 struct Black <: Color end
 struct White <: Color end
+
+abstract type Emptiness end
+struct Empty <: Emptiness end
 
 Base.show(io::IO, ::Empty) = print(io, "·")
 Base.show(io::IO, ::Black) = print(io, "⚈")
 Base.show(io::IO, ::White) = print(io, "⚆")
 
-mutable struct Board <: AbstractMatrix{Color}
-    array::Matrix{Color}
+mutable struct Board <: AbstractMatrix{Union{Color, Emptiness}}
+    array::Matrix{Union{Color, Emptiness}}
 end
 
 Base.size(board::Board) = size(board.array)
