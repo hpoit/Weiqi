@@ -1,3 +1,7 @@
+"""
+This is a mix of board.jl and chineserules.jl
+https://github.com/ismyrnow/Go
+"""
 
 const repeat = "The attempted repeated move is illegal."
 const occupied = "The selected intersection is occupied."

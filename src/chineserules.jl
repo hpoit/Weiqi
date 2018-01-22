@@ -31,22 +31,6 @@ function pass(np)
     ##### anything else?
 end
 
-mutable struct PositionHistory <: AbstractMatrix{NewPosition}
-    array::Matrix{NewPosition}
-end
-
-mutable struct Boardstate
-    ph::PositionHistory
-    nextcolor
-end
-
-function(bs::Boardstate)(x)
-    if newposition.stone == Black
-        nextcolor == White
-    else nextcolor == Black
-    end
-end
-
 struct Liberties end
 struct Group end
 struct Removal end
