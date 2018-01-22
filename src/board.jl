@@ -1,6 +1,6 @@
 abstract type Color end
 
-struct Empty <: Color end
+struct Empty <: Color end # Empty shouldn't be a color for security reasons
 struct Black <: Color end
 struct White <: Color end
 
