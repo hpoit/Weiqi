@@ -11,7 +11,7 @@ end
 applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
 "A `color` with `coords == [0,0]` is a pass"
-function pass(color)
+function pass(np.color,np.coords)
     if np.color == Black, np.coords == [0,0]
         pass = Black
     elseif np.color == White, np.coords == [0,0]
