@@ -28,10 +28,16 @@ function pass(np)
     elseif np.color == White; np.coords == [0,0]
         pass = White
     end
-    ##### anything else?
+    # anything else?
 end
 
-struct Liberties end
+function liberties
+    north = 
+    east =
+    south =
+    west =
+
+
 struct Group end
 struct Removal end
 struct Forbidden end
