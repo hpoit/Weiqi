@@ -7,7 +7,7 @@ mutable struct NewPosition
     coords::Tuple{Int, Int}
 end
 
-"For beginning or after beginning of game"
+"For beginning or after beginning of a game"
 function nextcolor(color)
     if color == Black
         nextcolor = White
