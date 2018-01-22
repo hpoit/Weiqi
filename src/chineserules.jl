@@ -11,10 +11,10 @@ end
 applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
 "A `color` with `coords == [0,0]` is a pass"
-function pass(np.color,np.coords)
-    if np.color == Black, np.coords == [0,0]
+function pass(np)
+    if np.color == Black; np.coords == [0,0]
         pass = Black
-    elseif np.color == White, np.coords == [0,0]
+    elseif np.color == White; np.coords == [0,0]
         pass = White
     end
     ##### anything else?
@@ -37,13 +37,13 @@ end
 
 mutable struct Boardstate
     ph::PositionHistory
-    nextplayer::Nextplayer
+    nextcolor
 end
 
 function(bs::Boardstate)(x)
     if newposition.stone == Black
-        nextplayer::Nextplayer == Whiteplayer
-    else nextplayer::Nextplayer == Blackplayer
+        nextcolor == White
+    else nextcolor == Black
     end
 end
 
