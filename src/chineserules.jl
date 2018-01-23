@@ -31,12 +31,12 @@ function pass(np)
     # anything else?
 end
 
-function liberties
-    north = 
-    east =
-    south =
-    west =
-
+function liberties()
+    north = board.array[Int-1, Int] 
+    east = board.array[Int, Int+1]
+    south = board.array[Int+1, Int]
+    west = board.array[Int, Int-1]
+end
 
 struct Group end
 struct Removal end
