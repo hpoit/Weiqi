@@ -46,8 +46,8 @@ function liberties(np)
     end
 end
 
-struct Group end
-struct Removal end
-struct Forbidden end
-struct Gameover end
-struct Winner end
+function group end
+function removal end
+function forbidden end
+function gameover end
+function winner end
