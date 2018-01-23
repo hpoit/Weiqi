@@ -32,6 +32,7 @@ function pass(np)
 end
 
 function liberties(np)
+    row, col = np.coords
     if np.coords[row-1, col] == Empty
         north = np.coords[row-1, col]
     end
