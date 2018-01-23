@@ -18,7 +18,7 @@ function nextcolor(color)
     end
 end
 
-"Given `coords`, apply `NewPosition` as `color`"
+"Given `coords`, apply `NewPosition` as `color` to the board"
 applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
 "A `color` with `coords == [0,0]` is a pass"
@@ -32,17 +32,17 @@ function pass(np)
 end
 
 function liberties(np)
-    if np.coords[int-1, int] == Empty
-        north = np.coords[int-1, int]
+    if np.coords[row-1, col] == Empty
+        north = np.coords[row-1, col]
     end
-    if np.coords[int, int+1] == Empty
-        east = np.coords[int, int+1]
+    if np.coords[row, col+1] == Empty
+        east = np.coords[row, col+1]
     end
-    if np.coords[int+1, int] == Empty
-        south = np.coords[int+1, int]
+    if np.coords[row+1, col] == Empty
+        south = np.coords[row+1, col]
     end
-    if np.coords[int, int-1] == Empty
-        west = np.coords[int, int-1]
+    if np.coords[row, col-1] == Empty
+        west = np.coords[row, col-1]
     end
 end
 
