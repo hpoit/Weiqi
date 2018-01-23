@@ -31,7 +31,6 @@ function pass(np)
     # anything else?
 end
 
-# liberties must be `Empty`
 function liberties(np)
     if np.coords[int-1, int] == Empty
         north = np.coords[int-1, int]
