@@ -31,8 +31,8 @@ function pass(np)
     # anything else?
 end
 
-function liberties()
-    north = board.array[Int-1, Int] 
+function liberties() # adj intersections must be unoccupied!
+    north = board.array[Int-1, Int]
     east = board.array[Int, Int+1]
     south = board.array[Int+1, Int]
     west = board.array[Int, Int-1]
