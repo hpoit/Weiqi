@@ -31,11 +31,20 @@ function pass(np)
     # anything else?
 end
 
-function liberties() # adj intersections must be unoccupied!
-    north = board.array[Int-1, Int]
-    east = board.array[Int, Int+1]
-    south = board.array[Int+1, Int]
-    west = board.array[Int, Int-1]
+# liberties must be `Empty`
+function liberties(np)
+    if np.coords[int-1, int] == Empty
+        north = np.coords[int-1, int]
+    end
+    if np.coords[int, int+1] == Empty
+        east = np.coords[int, int+1]
+    end
+    if np.coords[int+1, int] == Empty
+        south = np.coords[int+1, int]
+    end
+    if np.coords[int, int-1] == Empty
+        west = np.coords[int, int-1]
+    end
 end
 
 struct Group end
