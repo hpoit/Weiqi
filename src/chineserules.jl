@@ -83,9 +83,9 @@ Second adjacency list has `np.coords` as keys and `empty` as values
 """
 
 "Create adjacency list given sequence of color and tuples of colors"
-function createadjlist(np)
+function createadjlist(color, colors)
     result = Dict(c => eltype(Color)[] for c in Color)
-    for (a, b) in Color
+    for (a, b) in colors
         push!(result[a], b)
         push!(result[b], a)
     end
@@ -93,8 +93,8 @@ function createadjlist(np)
 end
 
 "Link BFS to adjacency list"
-BFS(color, colors, np, destination) =
-    BFS(createadjlist(color, colors), np, destination)
+BFS(color, colors, source, destination) =
+    BFS(createadjlist(color, colors), source, destination)
 
 function removal end
 function forbidden end
