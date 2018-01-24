@@ -21,8 +21,7 @@ end
 "Given `coords`, apply `NewPosition` as `color` to the board"
 applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
-getnewposition!(board::Board,np::NewPosition) =
-    board.array(np.coords...)
+getnewposition!(board::Board,np::NewPosition) = board.array(np.coords...)
 
 "A `color` with `coords == [0,0]` is a pass"
 function pass(np)
