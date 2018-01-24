@@ -57,9 +57,9 @@ and its `predecessor`. A source vertex has no `predecessor`, denoted by
 `null`
 """
 
-function BFS(adjlist, np, destination)
-    distance = Dict(np.coords => color)
-    queue = [np.coords => empty] # list of empty coords to be searched
+function BFS(np, adjlist, destination)
+    distance = Dict(np.coords => )
+    queue = [np.coords => empty] # empty coords to be searched
     while !isempty(queue)
         current = shift!(queue)
         if current == destination
@@ -75,10 +75,17 @@ function BFS(adjlist, np, destination)
     error("$np and $destination are not connected")
 end
 
+"""
+Adjacency lists for BFS:
+
+First adjacency list has `np.coords` as keys and `np.color` as values
+Second adjacency list has `np.coords` as keys and `empty` as values
+"""
+
 "Create adjacency list given sequence of color and tuples of colors"
-function createadjlist(color, colors)
-    result = Dict(c => eltype(color)[] for c in color)
-    for (a, b) in colors
+function createadjlist(np)
+    result = Dict(c => eltype(Color)[] for c in Color)
+    for (a, b) in Color
         push!(result[a], b)
         push!(result[b], a)
     end
