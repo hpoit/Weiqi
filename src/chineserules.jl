@@ -50,10 +50,10 @@ end
 
 """
 Function breadth-first search (BFS) for grouped liberties of colors:
-- For each vertex/color/liberty `v`, *`shortestdistance`* is the minimum number
+- For each vertex/color/liberty `v`, `shortestdistance` is the minimum number
 of edges in any path from `v` back to source vertex.
 - The `shortestdistance` from the source vertex contains `v`
-and its *`predecessor`*s. A source vertex has no `predecessor`, denoted by
+and its `predecessor`. A source vertex has no `predecessor`, denoted by
 `null`
 """
 
