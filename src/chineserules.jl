@@ -62,7 +62,7 @@ function BFS(adjlist, np, destination)
     queue = [np.coords => empty] # list of empty coords to be searched
     while !isempty(queue)
         current = shift!(queue)
-        if current == destination # empty coord
+        if current == destination
             return distance[destination]
         end
         for neighbor in adjlist[current]
