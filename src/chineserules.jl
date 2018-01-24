@@ -57,9 +57,9 @@ and its `predecessor`. A source vertex has no `predecessor`, denoted by
 `null`
 """
 
-function BFS(np, adjlist, destination)
-    distance = Dict(np.coords => )
-    queue = [np.coords => empty] # empty coords to be searched
+function BFS(source, adjlist, destination)
+    distance = Dict(source => 0)
+    queue = [source] # empty coords to be searched
     while !isempty(queue)
         current = shift!(queue)
         if current == destination
