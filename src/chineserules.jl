@@ -18,8 +18,8 @@ function nextcolor(color)
     end
 end
 
-"Given `coords`, apply `NewPosition` as `color` to the board"
-applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
+"Given `coords`, set `NewPosition` as `color` to the board"
+setnewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
 getnewposition!(board::Board,np::NewPosition) = board.array(np.coords...)
 
