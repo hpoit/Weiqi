@@ -4,7 +4,7 @@ using Weiqi
 
 mutable struct NewPosition
     color::Color # imports from src/board.jl
-    coords::Tuple{Int, Int}
+    coords::Tuple{Int64, Int64}
 end
 
 "For beginning or after beginning of a game"
@@ -20,6 +20,9 @@ end
 
 "Given `coords`, apply `NewPosition` as `color` to the board"
 applynewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
+
+getnewposition!(board::Board,np::NewPosition) =
+    board.array(np.coords...)
 
 "A `color` with `coords == [0,0]` is a pass"
 function pass(np)
