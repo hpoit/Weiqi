@@ -1,6 +1,8 @@
 using Weiqi
 
-const color = [:Black, :White]
-const colors = [(:Black, :White)]
+import Weiqi: black, white, BFS
 
-BFS(color, colors, :Black, :White)
+const color = [black, white]
+const colors = [(black, white)]
+
+BFS(color, colors)

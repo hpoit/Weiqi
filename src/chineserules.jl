@@ -49,8 +49,7 @@ function liberties(np)
 end
 
 "Breadth-first search for grouped liberties of colors (vertices)"
-function BFS(board, np, destination)
-    row, col = np.coords
+function BFS(adjlist, np, destination)
     distance = Dict(np => 0)
     queue = [np]
     while !isempty(queue)
@@ -58,7 +57,7 @@ function BFS(board, np, destination)
         if current == destination
             return distance[destination]
         end
-        for neighbor in board[current]
+        for neighbor in adjlist[current]
             if !haskey(distance, neighbor)
                 distance[neighbor] = distance[current] + 1
                 push!(queue, neighbor)
@@ -69,7 +68,7 @@ function BFS(board, np, destination)
 end
 
 "Create adjacency list given sequence of color and tuples of colors"
-function adjacencylist(color, colors)
+function createadjlist(color, colors)
     result = Dict(c => eltype(color)[] for c in color)
     for (a, b) in colors
         push!(result[a], b)
@@ -80,7 +79,7 @@ end
 
 "Link BFS to adjacency list"
 BFS(color, colors, np, destination) =
-    BFS(adjacencylist(color, colors), np, destination)
+    BFS(createadjlist(color, colors), np, destination)
 
 function removal end
 function forbidden end
