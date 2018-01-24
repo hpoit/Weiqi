@@ -48,13 +48,21 @@ function liberties(np)
     end
 end
 
-"Breadth-first search for grouped liberties of colors (vertices)"
+"""
+Function breadth-first search (BFS) for grouped liberties of colors:
+- For each vertex/color/liberty `v`, *`shortestdistance`* is the minimum number
+of edges in any path from `v` back to source vertex.
+- The `shortestdistance` from the source vertex contains `v`
+and its *`predecessor`*s. A source vertex has no `predecessor`, denoted by
+`null`
+"""
+
 function BFS(adjlist, np, destination)
-    distance = Dict(np => 0)
-    queue = [np]
+    distance = Dict(np.coords => color)
+    queue = [np.coords => empty] # list one of empty coords to be searched
     while !isempty(queue)
         current = shift!(queue)
-        if current == destination
+        if current == destination # empty coord
             return distance[destination]
         end
         for neighbor in adjlist[current]
