@@ -1,28 +1,30 @@
 using Weiqi
 
+import Weiqi: empty, black, white
+
 # Chinese rules https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
 mutable struct NewPosition
-    color::Color # imports from src/board.jl
     coords::Tuple{Int64, Int64}
-end
-
-"For beginning or after beginning of a game"
-function nextcolor(color)
-    if color == Black
-        nextcolor = White
-    elseif color == White
-        nextcolor = Black
-    else
-        nextcolor == Black
-    end
+    color::Color # imports from src/board.jl
 end
 
 "Given `coords`, set `NewPosition` as `color` to the board"
-Base.setindex!(board::Board, i, j, color) = board.array[i, j] = color
+Base.setindex!(board::Board, np::NewPosition) = board.array[np.coords] = np.color
+
+"For beginning or after beginning of a game"
+function nextcolor(np)
+    if np.color == black
+        nextcolor = white
+    elseif np.color == white
+        nextcolor = black
+    else
+        nextcolor == black
+    end
+end
 
 "A `color` with `coords == [0,0]` is a pass"
-function pass(np)
+function pass(np::NewPosition)
     if np.color == Black; np.coords == [0,0]
         pass = Black
     elseif np.color == White; np.coords == [0,0]
