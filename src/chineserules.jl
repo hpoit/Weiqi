@@ -7,13 +7,6 @@ import Weiqi: empty, black, white
 mutable struct NewPosition
     coords::Tuple{Int64, Int64}
     color::Color # imports `::Color` from src/board.jl
-    if color == black
-        nextcolor = white
-    elseif color == white
-        nextcolor = black
-    else
-        nextcolor == black
-    end
 end
 
 "Given `coords`, set `NewPosition` as `color` to the board"
