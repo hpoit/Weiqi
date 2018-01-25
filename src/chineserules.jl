@@ -6,11 +6,18 @@ import Weiqi: empty, black, white
 
 mutable struct NewPosition
     coords::Tuple{Int64, Int64}
-    color::Color # imports from src/board.jl
+    color::Color # imports `::Color` from src/board.jl
+    if color == black
+        nextcolor = white
+    elseif color == white
+        nextcolor = black
+    else
+        nextcolor == black
+    end
 end
 
 "Given `coords`, set `NewPosition` as `color` to the board"
-Base.setindex!(board::Board, np::NewPosition) = board.array[np.coords] = np.color
+Base.setindex!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
 
 "For beginning or after beginning of a game"
 function nextcolor(np)
@@ -22,6 +29,8 @@ function nextcolor(np)
         nextcolor == black
     end
 end
+
+
 
 "A `color` with `coords == [0,0]` is a pass"
 function pass(np::NewPosition)
