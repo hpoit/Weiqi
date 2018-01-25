@@ -19,9 +19,7 @@ function nextcolor(color)
 end
 
 "Given `coords`, set `NewPosition` as `color` to the board"
-setnewposition!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
-
-getnewposition!(board::Board,np::NewPosition) = board.array(np.coords...)
+Base.setindex!(board::Board, i, j, color) = board.array[i, j] = color
 
 "A `color` with `coords == [0,0]` is a pass"
 function pass(np)
