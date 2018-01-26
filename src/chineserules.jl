@@ -4,13 +4,21 @@ import Weiqi: empty, black, white
 
 # Chinese rules https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
-mutable struct NewPosition
+abstract type Player end
+struct Blackplayer <: Player end
+struct Whiteplayer <: Player end
+
+mutable struct NewPosition{T<:Player}
+    player::T
     coords::Tuple{Int64, Int64}
-    color::Color # imports `::Color` from src/board.jl
+    stone::Stone
 end
 
+bp = Blackplayer()
+wp = Whiteplayer()
+
 "Given `coords`, set `NewPosition` as `color` to the board"
-Base.setindex!(board::Board, np::NewPosition) = board.array[np.coords...] = np.color
+Base.setindex!(board::Board, np::NewPosition) = board.array[np.coords...] = np.player = np.stone
 
 "For beginning or after beginning of a game"
 function nextcolor(np)
