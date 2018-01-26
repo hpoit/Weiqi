@@ -22,12 +22,12 @@ Base.setindex!(board::Board, np::NewPosition) = board.array[np.coords...] = np.p
 
 "For beginning or after beginning of a game"
 function nextplayer(np)
-    if np.color == black
-        nextcolor = white
-    elseif np.color == white
-        nextcolor = black
+    if np.player == bp
+        nextplayer = wp
+    elseif np.player == wp
+        nextplayer = bp
     else
-        nextcolor == black
+        nextplayer == bp
     end
 end
 
