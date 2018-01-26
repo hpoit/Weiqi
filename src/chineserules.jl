@@ -17,11 +17,11 @@ end
 bp = Blackplayer()
 wp = Whiteplayer()
 
-"Given `coords`, set `NewPosition` as `color` to the board"
+"Given `coords` by `player`, set `stone` to the board"
 Base.setindex!(board::Board, np::NewPosition) = board.array[np.coords...] = np.player = np.stone
 
 "For beginning or after beginning of a game"
-function nextcolor(np)
+function nextplayer(np)
     if np.color == black
         nextcolor = white
     elseif np.color == white

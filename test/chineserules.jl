@@ -10,7 +10,7 @@ np = NewPosition(bp, (1,2), empty) # cannot happen
 np = NewPosition(wp, (1,2), empty) # cannot happen
 
 np.coords
-np.color
+np.stone
 end
 
 @testset "set and access coords and color to board" begin
