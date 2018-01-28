@@ -17,9 +17,6 @@ end
 bp = Blackplayer()
 wp = Whiteplayer()
 
-"Given `coords` by `player`, set `stone` to the board"
-Base.setindex!(board::Board, np::NewPosition) = board.array[np.coords...] = np.player = np.stone
-
 "For beginning or after beginning of a game"
 function nextplayer(np)
     if np.player == bp
@@ -31,10 +28,9 @@ function nextplayer(np)
     end
 end
 
-
-
-"A `color` with `coords == [0,0]` is a pass"
-function pass(np::NewPosition)
+# tricky
+"If a `player` chooses `coords == [0,0]`, `player` passes and `nextplayer(np)` is called"
+function pass()
     if np.color == Black; np.coords == [0,0]
         pass = Black
     elseif np.color == White; np.coords == [0,0]

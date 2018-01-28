@@ -2,11 +2,21 @@ using Weiqi
 
 import Weiqi: empty, black, white, cb
 
-# Test board
-cb.array[5, 8] = black # struct Move in BoardState?
-cb.array[13,17] = white
+@testset "set and access coords and stone to board" begin
+# Set coordinate (1,2) as black, white, empty on board
+cb.array[1,2] = black;
+cb.array[1,2] = white;
+cb.array[1,2] = empty;
 cb
 
-# Empty board
-cb.array[1:19,1:19] = empty # [row, column]
-cb
+# Access coordinate (1,2) on board, with associated color
+cb.array[1,2]
+cb.array[1,3]
+
+# Empty all board
+cb.array[1:19,1:19] = empty;
+end
+
+@testset "test Base.setindex!()" begin
+###
+end
