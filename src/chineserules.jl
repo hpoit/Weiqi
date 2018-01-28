@@ -17,7 +17,6 @@ end
 bp = Blackplayer()
 wp = Whiteplayer()
 
-"For beginning or after beginning of a game"
 function nextplayer(np)
     if np.player == bp
         nextplayer = wp
@@ -30,13 +29,14 @@ end
 
 # tricky
 "If a `player` chooses `coords == [0,0]`, `player` passes and `nextplayer(np)` is called"
-function pass()
-    if np.color == Black; np.coords == [0,0]
+function pass(np)
+    if np.player == bp; np.coords == [0,0]
         pass = Black
-    elseif np.color == White; np.coords == [0,0]
+    elseif np.player == wp; np.coords == [0,0]
         pass = White
+    else
+        println("no passes")
     end
-    # anything else?
 end
 
 "Defines cardinal directions of `np.coords`"
