@@ -27,7 +27,7 @@ function nextplayer(np)
     end
 end
 
-# tricky
+# stopped here
 "If a `player` chooses `coords == [0,0]`, `player` passes and `nextplayer(np)` is called"
 function pass(np)
     if np.player == bp; np.coords == [0,0]
@@ -35,7 +35,7 @@ function pass(np)
     elseif np.player == wp; np.coords == [0,0]
         pass = White
     else
-        println("no passes")
+        println("No passes")
     end
 end
 

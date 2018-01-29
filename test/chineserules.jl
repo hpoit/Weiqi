@@ -17,3 +17,11 @@ end
 np.player
 nextplayer(np)
 end
+
+@testset "set a pass, then unset it" begin
+np = NewPosition(bp, (0,0), black)
+pass(np)
+
+np = NewPosition(bp, (1,1), black)
+pass(np)
+end
