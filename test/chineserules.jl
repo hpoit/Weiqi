@@ -1,8 +1,8 @@
 using Weiqi
 
-import Weiqi: empty, white, black, cb, NewPosition, bp, wp
+import Weiqi: empty, white, black, cb, NewPosition, bp, wp, nextplayer, pass
 
-@testset "assign variable `np` to NewPosition(player, coords, stone)" begin
+@testset "assign var `np` to NewPosition(player, coords, stone)" begin
 np = NewPosition(bp, (1,2), black)
 np = NewPosition(wp, (1,2), white)
 
