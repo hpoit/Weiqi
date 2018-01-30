@@ -27,7 +27,7 @@ function nextplayer(np)
     end
 end
 
-# stopped here
+# incomplete testing
 "If a `player` chooses `coords == [0,0]`, `player` passes and `nextplayer(np)` is called"
 function pass(np)
     if np.player == bp; np.coords == [0,0]
@@ -39,20 +39,32 @@ function pass(np)
     end
 end
 
-"Defines cardinal directions of `np.coords`"
+"Defines cardinal directions of a `stone`"
 function liberties(np)
     row, col = np.coords
-    if np.coords[row-1, col] == Empty
-        north = np.coords[row-1, col]
+    if row == 1
+      println("northless")
+    elseif cb.array[row-1, col] == empty
+      north = cb.array[row-1, col]
+      println(north)
     end
-    if np.coords[row, col+1] == Empty
-        east = np.coords[row, col+1]
+    if col == 19
+      println("eastless")
+    elseif cb.array[row, col+1] == empty
+      east = cb.array[row, col+1]
+      println(east)
     end
-    if np.coords[row+1, col] == Empty
-        south = np.coords[row+1, col]
+    if row == 19
+      println("southless")
+    elseif cb.array[row+1, col] == empty
+      south = cb.array[row+1, col]
+      println(south)
     end
-    if np.coords[row, col-1] == Empty
-        west = np.coords[row, col-1]
+    if col == 1
+      println("westless")
+    elseif cb.array[row, col-1] == empty
+      west = cb.array[row, col-1]
+      println(west)
     end
 end
 

@@ -5,6 +5,7 @@ import Weiqi: empty, white, black, cb, NewPosition, bp, wp, nextplayer, pass
 @testset "assign var `np` to NewPosition(player, coords, stone)" begin
 np = NewPosition(bp, (1,2), black)
 np = NewPosition(wp, (1,2), white)
+# board state should decide when overwrite can happen
 
 np = NewPosition(bp, (1,2), empty) # cannot happen
 np = NewPosition(wp, (1,2), empty) # cannot happen
@@ -25,3 +26,5 @@ pass(np)
 np = NewPosition(bp, (1,1), black)
 pass(np)
 end
+
+@testset "test cardinal directions of a `stone`" begin
