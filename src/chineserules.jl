@@ -1,6 +1,6 @@
 using Weiqi
 
-import Weiqi: empty, black, white
+import Weiqi: empty, black, white, magnitude
 
 # Chinese rules https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
@@ -17,10 +17,10 @@ end
 bp = Blackplayer()
 wp = Whiteplayer()
 
-function nextplayer(np)
-    if np.player == bp
+function nextplayer(newpos)
+    if newpos.player == bp
         nextplayer = wp
-    elseif np.player == wp
+    elseif newpos.player == wp
         nextplayer = bp
     else
         nextplayer == bp
@@ -29,10 +29,10 @@ end
 
 # incomplete testing
 "If a `player` chooses `coords == [0,0]`, `player` passes and `nextplayer(np)` is called"
-function pass(np)
-    if np.player == bp; np.coords == [0,0]
+function pass(newpos)
+    if newpos.player == bp && newpos.coords == [0,0]
         pass = Black
-    elseif np.player == wp; np.coords == [0,0]
+    elseif newpos.player == wp && newpos.coords == [0,0]
         pass = White
     else
         println("No passes")
@@ -40,21 +40,21 @@ function pass(np)
 end
 
 "Defines cardinal directions of a `stone`"
-function liberties(np)
-    row, col = np.coords
+function liberties(newpos)
+    row, col = newpos.coords
     if row == 1
       println("northless")
     elseif cb.array[row-1, col] == empty
       north = cb.array[row-1, col]
       println("north ($row-1, $col)")
     end
-    if col == 19
+    if col == magnitude
       println("eastless")
     elseif cb.array[row, col+1] == empty
       east = cb.array[row, col+1]
       println("east ($row, $col+1)")
     end
-    if row == 19
+    if row == magnitude
       println("southless")
     elseif cb.array[row+1, col] == empty
       south = cb.array[row+1, col]

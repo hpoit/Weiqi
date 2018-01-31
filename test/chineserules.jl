@@ -3,28 +3,32 @@ using Weiqi
 import Weiqi: empty, white, black, cb, NewPosition, bp, wp, nextplayer, pass
 
 @testset "assign var `np` to NewPosition(player, coords, stone)" begin
-np = NewPosition(bp, (1,2), black)
-np = NewPosition(wp, (1,2), white)
+newpos = NewPosition(bp, (1,2), black)
+newpos = NewPosition(wp, (1,2), white)
 # board state should decide when overwrite can happen
 
-np = NewPosition(bp, (1,2), empty) # cannot happen
-np = NewPosition(wp, (1,2), empty) # cannot happen
+newpos = NewPosition(bp, (1,2), empty) # cannot happen
+newpos = NewPosition(wp, (1,2), empty) # cannot happen
 
-np.coords
-np.stone
+newpos.coords
+newpos.stone
 end
 
 @testset "call `function nextplayer(np)`" begin
-np.player
-nextplayer(np)
+newpos.player
+nextplayer(newpos)
 end
 
 @testset "set a pass, then unset it" begin
-np = NewPosition(bp, (0,0), black)
-pass(np)
+newpos = NewPosition(bp, (0,0), black)
+pass(newpos)
 
-np = NewPosition(bp, (1,1), black)
-pass(np)
+newpos = NewPosition(bp, (1,1), black)
+pass(newpos)
 end
 
 @testset "test cardinal directions of a `stone`" begin
+cb.array[1:19,1:19] = empty;
+newpos.coords
+liberties(newpos)
+end
