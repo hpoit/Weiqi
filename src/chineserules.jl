@@ -46,25 +46,25 @@ function liberties(np)
       println("northless")
     elseif cb.array[row-1, col] == empty
       north = cb.array[row-1, col]
-      println(north)
+      println("north ($row-1, $col)")
     end
     if col == 19
       println("eastless")
     elseif cb.array[row, col+1] == empty
       east = cb.array[row, col+1]
-      println(east)
+      println("east ($row, $col+1)")
     end
     if row == 19
       println("southless")
     elseif cb.array[row+1, col] == empty
       south = cb.array[row+1, col]
-      println(south)
+      println("south ($row+1, $col)")
     end
     if col == 1
       println("westless")
     elseif cb.array[row, col-1] == empty
       west = cb.array[row, col-1]
-      println(west)
+      println("west ($row, $col-1)")
     end
 end
 

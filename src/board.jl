@@ -5,9 +5,9 @@ struct White <: Stone end
 abstract type Emptiness end
 struct Empty <: Emptiness end
 
-#Base.show(io::IO, ::Empty) = print(io, "·")
-#Base.show(io::IO, ::Black) = print(io, "⚈")
-#Base.show(io::IO, ::White) = print(io, "⚆")
+Base.show(io::IO, ::Empty) = print(io, "·")
+Base.show(io::IO, ::Black) = print(io, "⚈")
+Base.show(io::IO, ::White) = print(io, "⚆")
 
 mutable struct Board <: AbstractMatrix{Union{Stone, Emptiness}}
     array::Matrix{Union{Stone, Emptiness}}
