@@ -26,11 +26,20 @@ cb = createboard(magnitude)
 
 "Defines cardinal directions of a stone on board"
 function neighbors(row::Int64, col::Int64, cb)
-    north = (row+1, col)
-    south = (row-1, col)
-    east = (row, col+1)
-    west = (row, col-1)
-    return cb.array[north...], cb.array[south...], cb.array[east...], cb.array[west...]
+    output = Tuple{Int, Int}[]
+    if row != 1 && cb.array[row-1, col] == empty
+            push!(output, (row-1, col))
+    end
+    if row != size(cb, 1) && cb.array[row+1, col] == empty
+            push!(output, (row+1, col))
+    end
+    if col != size(cb, 2) && cb.array[row, col+1] == empty
+            push!(output, (row, col+1))
+    end
+    if col != 1 && cb.array[row, col-1] == empty
+            push!(output, (row, col-1))
+    end
+    output
 end
 
 # test for 361 intersections
