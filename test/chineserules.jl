@@ -14,10 +14,6 @@ newpos.coords
 newpos.stone
 end
 
-@testset "create newpos_history var and view it" begin
-###
-end
-
 @testset "call `function nextplayer(np)`" begin
 newpos.player
 nextplayer(newpos)
