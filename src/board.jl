@@ -21,7 +21,7 @@ empty = Empty()
 black = Black()
 white = White()
 
-createboard(magnitude) = Board(Matrix{Empty}(magnitude, magnitude))
+createboard(m) = Board(Matrix{Empty}(m, m))
 cb = createboard(magnitude)
 
 magnitude = 19

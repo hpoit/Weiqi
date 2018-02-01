@@ -39,33 +39,13 @@ function pass(newpos)
     end
 end
 
-"Defines cardinal directions of a `stone`"
-function liberties(newpos)
-    row, col = newpos.coords
-    if row == 1
-      println("northless")
-    elseif cb.array[row-1, col] == empty
-      north = cb.array[row-1, col]
-      println("north ($row-1, $col)")
-    end
-    if col == magnitude
-      println("eastless")
-    elseif cb.array[row, col+1] == empty
-      east = cb.array[row, col+1]
-      println("east ($row, $col+1)")
-    end
-    if row == magnitude
-      println("southless")
-    elseif cb.array[row+1, col] == empty
-      south = cb.array[row+1, col]
-      println("south ($row+1, $col)")
-    end
-    if col == 1
-      println("westless")
-    elseif cb.array[row, col-1] == empty
-      west = cb.array[row, col-1]
-      println("west ($row, $col-1)")
-    end
+"Defines cardinal directions of ALL `stone`s on board"
+function neighbors(newpos, board::Board)
+    north = (row+1, col)
+    south = (row-1, col)
+    east = (row, col+1)
+    west = (row, col-1)
+    return board[north...], board[south...], board[east...], board[west...]
 end
 
 """
