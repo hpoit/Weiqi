@@ -39,7 +39,7 @@ function pass(newpos)
     end
 end
 
-"Defines cardinal directions of ALL `stone`s on board"
+"Defines cardinal directions of ALL `newpos` on board"
 function neighbors(newpos, board::Board)
     north = (row+1, col)
     south = (row-1, col)
