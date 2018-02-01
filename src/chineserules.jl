@@ -17,6 +17,10 @@ end
 bp = Blackplayer()
 wp = Whiteplayer()
 
+newpos_history = (player::Player, Tuple{Int, Int}, empty, black, white)[]
+push!(newpos_history, bp, (1, 2), black)
+push!(newpos_history, wp, (1, 4), white)
+
 function nextplayer(newpos)
     if newpos.player == bp
         nextplayer = wp
@@ -37,15 +41,6 @@ function pass(newpos)
     else
         println("No passes")
     end
-end
-
-"Defines cardinal directions of ALL `newpos` on board"
-function neighbors(newpos, board::Board)
-    north = (row+1, col)
-    south = (row-1, col)
-    east = (row, col+1)
-    west = (row, col-1)
-    return board[north...], board[south...], board[east...], board[west...]
 end
 
 """
