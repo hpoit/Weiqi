@@ -22,25 +22,6 @@ black = Black()
 white = White()
 
 createboard(m) = Board(Matrix{Empty}(m, m))
-cb = createboard(magnitude)
+cb = createboard(19)
 
-"Defines cardinal directions of a stone on board"
-function neighbors(row::Int64, col::Int64, cb)
-    output = Tuple{Int, Int}[]
-    if row != 1 && cb.array[row-1, col] == empty
-            push!(output, (row-1, col))
-    end
-    if row != size(cb, 1) && cb.array[row+1, col] == empty
-            push!(output, (row+1, col))
-    end
-    if col != size(cb, 2) && cb.array[row, col+1] == empty
-            push!(output, (row, col+1))
-    end
-    if col != 1 && cb.array[row, col-1] == empty
-            push!(output, (row, col-1))
-    end
-    output
-end
-
-# test for 361 intersections
 # make distinguished marks for star points when possible

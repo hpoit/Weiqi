@@ -17,10 +17,6 @@ end
 bp = Blackplayer()
 wp = Whiteplayer()
 
-newpos_history = (player::Player, Tuple{Int, Int}, empty, black, white)[]
-push!(newpos_history, bp, (1, 2), black)
-push!(newpos_history, wp, (1, 4), white)
-
 function nextplayer(newpos)
     if newpos.player == bp
         nextplayer = wp
@@ -43,53 +39,47 @@ function pass(newpos)
     end
 end
 
-"""
-Function breadth-first search (BFS) for grouped liberties of colors:
-- For each vertex/color/liberty `v`, `shortestdistance` is the minimum number
-of edges in any path from `v` back to source vertex.
-- The `shortestdistance` from the source vertex contains `v`
-and its `predecessor`. A source vertex has no `predecessor`, denoted by
-`null`
-"""
+"Lists all cardinal directions (empty or not) around a stone"
+function neighbors(cb, row::Int64, col::Int64)
+    neighbor_list = Tuple{Int, Int}[]
+    if row != 1
+        push!(neighbor_list, (row-1, col))
+    end
+    if row != size(cb, 1)
+        push!(neighbor_list, (row+1, col))
+    end
+    if col != size(cb, 2)
+        push!(neighbor_list, (row, col+1))
+    end
+    if col != 1
+        push!(neighbor_list, (row, col-1))
+    end
+    neighbor_list
+end
 
-function BFS(source, adjlist, destination)
-    distance = Dict(source => 0)
-    queue = [source] # empty coords to be searched
-    while !isempty(queue)
-        current = shift!(queue)
-        if current == destination
-            return distance[destination]
-        end
-        for neighbor in adjlist[current]
-            if !haskey(distance, neighbor)
-                distance[neighbor] = distance[current] + 1
-                push!(queue, neighbor)
+"Searches for empty cardinal directions (liberties) around a stone or group of stones"
+function liberties(cb, row::Int64, col::Int64)
+    stone = cb.array[row, col]
+    checked =  fill(false, size(cb))
+    checked[row, col] = true # mark true for visited (row, col)
+    open_set = [] # non-visited nodes
+    closed_set = [] # visited nodes
+    for neighbor ∈ neighbors(cb, row, col)
+        neighbor_row, neighbor_col = neighbor
+        if !checked[neighbor_row, neighbor_col] # if (row, col) not visited
+            if cb.array[neighbor] == stone # search key
+                push!(open_set, neighbor)
+            elseif cb.array[neighbor] == empty
+                push!(closed_set, neighbor)
             end
+            checked[neighbor_row, neighbor_col] = true
         end
     end
-    error("$np and $destination are not connected")
-end
-
-"""
-Adjacency lists for BFS:
-
-First adjacency list has `np.coords` as keys and `np.color` as values
-Second adjacency list has `np.coords` as keys and `empty` as values
-"""
-
-"Create adjacency list given sequence of color and tuples of colors"
-function createadjlist(color, colors)
-    result = Dict(c => eltype(Color)[] for c in Color)
-    for (a, b) in colors
-        push!(result[a], b)
-        push!(result[b], a)
+    while !isempty(open_set)
+        coords = shift!(open_set) # check neighbors of this coordinate and do the same as above
     end
-    result
+    closed_set
 end
-
-"Link BFS to adjacency list"
-BFS(color, colors, source, destination) =
-    BFS(createadjlist(color, colors), source, destination)
 
 function removal end
 function forbidden end

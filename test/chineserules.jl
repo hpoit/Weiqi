@@ -1,6 +1,7 @@
 using Weiqi
 
-import Weiqi: empty, white, black, cb, NewPosition, bp, wp, nextplayer, pass
+import Weiqi: empty, white, black, cb
+import Weiqi: NewPosition, bp, wp, nextplayer, pass, neighbors, liberties
 
 @testset "assign var `np` to NewPosition(player, coords, stone)" begin
 newpos = NewPosition(bp, (1,2), black)
@@ -27,8 +28,13 @@ newpos = NewPosition(bp, (1,1), black)
 pass(newpos)
 end
 
-@testset "test cardinal directions of a `stone`" begin
-cb.array[1:19,1:19] = empty;
-newpos.coords
-liberties(newpos)
+@testset "test `function neighbors(cb, row::Int64, col::Int64)`" begin
+# assume cb = createboard(19)
+neighbors(cb, 1, 1)
+neighbors(cb, 19, 19)
+neighbors(cb, 7, 13)
+end
+
+@testset "test `function liberties(cb, row::Int64, col::Int64)``" begin
+liberties(cb, 15, 15)
 end
