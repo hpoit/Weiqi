@@ -1,6 +1,6 @@
 using Weiqi
 
-import Weiqi: empty, black, white, magnitude
+import Weiqi: empty, black, white, magnitude, cb
 
 # Chinese rules https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 
@@ -60,7 +60,7 @@ end
 "Searches for empty cardinal directions (liberties) around a stone or group of stones"
 function liberties(cb, row::Int64, col::Int64)
     stone = cb.array[row, col]
-    checked =  fill(false, size(cb))
+    checked =  fill(false, size(cb)) # heap allocation
     checked[row, col] = true # mark true for visited (row, col)
     open_set = [] # non-visited nodes
     closed_set = [] # visited nodes
