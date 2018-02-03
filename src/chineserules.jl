@@ -67,9 +67,9 @@ function liberties(cb, row::Int64, col::Int64)
     for neighbor ∈ neighbors(cb, row, col)
         neighbor_row, neighbor_col = neighbor
         if !checked[neighbor_row, neighbor_col] # if (row, col) not visited
-            if cb.array[neighbor] == stone # search key
+            if cb.array[neighbor_row, neighbor_col] == stone # search key
                 push!(open_set, neighbor)
-            elseif cb.array[neighbor] == empty
+            elseif cb.array[neighbor_row, neighbor_col] == stone
                 push!(closed_set, neighbor)
             end
             checked[neighbor_row, neighbor_col] = true

@@ -22,6 +22,6 @@ black = Black()
 white = White()
 
 createboard(m) = Board(Matrix{Empty}(m, m))
-cb = createboard(19)
+cb = createboard(19);
 
 # make distinguished marks for star points when possible
