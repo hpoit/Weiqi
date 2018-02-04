@@ -60,7 +60,7 @@ end
 "Searches for empty cardinal directions (liberties) around a stone or group of stones"
 function liberties(cb, row::Int64, col::Int64)
     stone = cb.array[row, col]
-    checked =  fill(false, size(cb)) # heap allocation
+    checked = fill(false, size(cb)) # heap allocation
     checked[row, col] = true # mark true for visited (row, col)
     open_set = [] # non-visited nodes
     closed_set = [] # visited nodes
@@ -69,7 +69,7 @@ function liberties(cb, row::Int64, col::Int64)
         if !checked[neighbor_row, neighbor_col] # if (row, col) not visited
             if cb.array[neighbor_row, neighbor_col] == stone # search key
                 push!(open_set, neighbor)
-            elseif cb.array[neighbor_row, neighbor_col] == stone
+            elseif cb.array[neighbor_row, neighbor_col] == empty
                 push!(closed_set, neighbor)
             end
             checked[neighbor_row, neighbor_col] = true
