@@ -36,5 +36,9 @@ neighbors(cb, 7, 13)
 end
 
 @testset "test `function liberties(cb, row::Int64, col::Int64)``" begin
-liberties(cb, 15, 15)
+cb.array[3:5,3:5] = black; # create black block
+cb
+liberties(cb, 4, 5) # black block
+liberties(cb, 3, 3) # black block
+liberties(cb, 5, 4) # black block
 end
