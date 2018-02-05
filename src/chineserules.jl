@@ -67,10 +67,10 @@ function liberties(cb, row::Int64, col::Int64)
     for neighbor ∈ neighbors(cb, row, col)
         neighbor_row, neighbor_col = neighbor
         if !checked[neighbor_row, neighbor_col] # if (row, col) not visited
-            if cb.array[neighbor_row, neighbor_col] == stone # search key
+            if cb.array[neighbor_row, neighbor_col] == stone
                 push!(open_set, neighbor)
             elseif cb.array[neighbor_row, neighbor_col] == empty
-                push!(closed_set, neighbor)
+                push!(closed_set, neighbor) # liberties
             end
             checked[neighbor_row, neighbor_col] = true
         end
@@ -78,7 +78,7 @@ function liberties(cb, row::Int64, col::Int64)
     while !isempty(open_set)
         coords = shift!(open_set) # check neighbors of this coordinate and do the same as above
     end
-    closed_set
+    closed_set # liberties
 end
 
 function removal end
