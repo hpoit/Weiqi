@@ -61,18 +61,18 @@ end
 function liberties(cb, row::Int64, col::Int64)
     stone = cb.array[row, col]
     checked = fill(false, size(cb)) # heap allocation
-    checked[row, col] = true # mark true for visited (row, col)
+    checked[row, col] = true # mark true for visited (row, col) (loop invariant)
     open_set = [] # non-visited nodes
     closed_set = [] # visited nodes
     for neighbor ∈ neighbors(cb, row, col)
         neighbor_row, neighbor_col = neighbor
         if !checked[neighbor_row, neighbor_col] # if (row, col) not visited
-            if cb.array[neighbor_row, neighbor_col] == stone
+            if cb.array[neighbor_row, neighbor_col] == stone # if i equals arg
                 push!(open_set, neighbor)
             elseif cb.array[neighbor_row, neighbor_col] == empty
                 push!(closed_set, neighbor) # liberties
             end
-            checked[neighbor_row, neighbor_col] = true
+            checked[neighbor_row, neighbor_col] == true # loop invariant for correct termination
         end
     end
     while !isempty(open_set)
