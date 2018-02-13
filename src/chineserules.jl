@@ -72,7 +72,7 @@ function liberties(cb, row::Int64, col::Int64)
             elseif cb.array[neighbor_row, neighbor_col] == empty
                 push!(closed_set, neighbor) # liberties
             end
-            checked[neighbor_row, neighbor_col] == true # loop invariant for correct termination
+            checked[neighbor_row, neighbor_col] = true # loop invariant for correct termination
         end
     end
     while !isempty(open_set)
