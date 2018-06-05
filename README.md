@@ -1,1 +1,1 @@
-# Weiqi - beginning of AlphaGo
+# Weiqi (AlphaGo beginning)
