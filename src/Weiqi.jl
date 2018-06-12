@@ -1,3 +1,5 @@
+# Special thanks to https://github.com/mweastwood
+
 """
 Evaluating the first line is equivalent to typing `module Weiqi` into
 the terminal. Eval the file.
